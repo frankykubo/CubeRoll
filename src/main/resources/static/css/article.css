@@ -1,0 +1,198 @@
+.addArtDiv{
+    width: 65%;
+    padding: 10px;
+    margin: auto;
+    background-color: #E4C2C6;
+    display: block;
+    border-radius: 10px;
+    clear: right;
+    font-size: 1vw;
+}
+
+.addArticleHeader{
+    margin: 0;
+    text-align: center;
+    text-decoration-line: underline;
+    font-weight: 600;
+    font-size: 1.3vw;
+}
+
+.addArtDiv div{
+    padding: 5px;
+    margin-right: 2vw;
+    clear: both;
+}
+
+.addArtDiv label {
+    font-weight: 100;
+}
+
+.addArtDiv div textarea {
+    float: right;
+    width: 50%;
+    resize: none;
+    margin-bottom: 5px;
+    max-height: 70px;
+}
+
+#commentAdd {
+    float: right;
+    width: 50%;
+    resize: none;
+    margin-bottom: 5px;
+    max-height: 10em;
+}
+
+.comment {
+    padding: 10px;
+    margin: 1em;
+    background-color: #E4C2C6;
+    border-radius: 10px;
+}
+
+.addArtDiv div input {
+    float: right;
+    width: 50%;
+    height: 2.4vw;
+    max-height: 18px;
+}
+
+.buttons, footer {
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: #B66D1D;
+    border: none;
+    color: black;
+    padding: 1vw 1.6vw;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+}
+
+.buttons button[class=artSubmit] {
+    margin-left: 10px;
+}
+
+.artSubmit a {
+    text-decoration: none;
+    color: black;
+}
+
+.buttons button[class=artReset] {
+    margin-right: 10px;
+}
+
+.linkAsButton{
+    border: none;
+    color: black;
+    padding: 0.7vw 1.3vw;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    margin: 5px;
+    background-color: #b6211d;
+    border-radius: 3px;
+}
+
+article {
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px #ca8642 inset;
+    font-size: 1vw;
+    padding: 20px;
+    padding-bottom: 35px;
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    width: 50em;
+    text-align: left;
+}
+
+article article {
+    width: 40em;
+}
+
+.articleAuthor {
+    color: #0A014F;
+    margin-bottom: 1em;
+    text-decoration: underline;
+}
+
+.articleHeader {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #B66D0D;
+}
+
+.articleHeader a{
+    text-decoration: none;
+    color: #B66D0D;
+}
+
+.articleHeader a:hover{
+    color: #cb9855
+}
+
+article img {
+    position: relative;
+    width: 50%;
+    height: auto;
+    margin-left: 0%;
+    padding: 5%;
+    padding-left: 0;
+    border-bottom-left-radius: 7vw;
+    border-bottom-right-radius: 3vw;
+    border-top-left-radius: 2vw;
+    border-top-right-radius: 7vw;
+}
+
+ul {
+    padding-top: 0;
+    margin-top: 0;
+    padding-left: 3%;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    margin-bottom: 8px;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    text-align: center;
+    border: 1px solid black;
+}
+
+th {
+    background-color: #4CAF50;
+    height: 1.5rem;
+    color: white;
+}
+
+@media (max-width: 1000px){
+    article{
+        box-shadow: 0px 0px 0px 0px #F6CACA inset;
+        font-size: 1rem;
+        width: auto;
+        padding: 20px;
+        padding-right: 0;
+    }
+}
+
+.infoText {
+    margin-top: 1.53em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

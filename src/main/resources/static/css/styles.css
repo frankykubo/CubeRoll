@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #FAE8EB;
+}
+
+.headerImage {
+    position: relative;
+    background-image: url(../images/cuberoll/bgheader.jpg);
+    background-size: cover;
+    height: 13vw;
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+.headerGamestudio {
+    position: relative;
+    background-image: url(../images/cuberoll/bgheader2.jpg);
+    background-size: cover;
+    height: 13vw;
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+.headerCuberoll {
+    position: relative;
+    background-image: url(../images/cuberoll/cuberollHeader.jpg);
+    background-size: cover;
+    height: 13vw;
+    margin-left: 12vw;
+    margin-right: 12vw;
+}
+
+
+header {
+    position: relative;
+    margin-bottom: 0;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    background: #E4C2C6;
+    font-size: 1vw;
+}
+
+.logo img {
+    height: 2.6vw;
+    width: auto;
+    padding: 0;
+    float: left;
+    margin-left: 0.5vw;
+    margin-top: 0.2vw;
+    
+}
+
+nav {
+    float: right;
+}
+
+.fix {
+    clear: both;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    list-style: none;
+}
+nav ul li a {
+    text-decoration: none;
+    display: block;
+    padding: 1em 1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #262626;
+}
+
+nav ul li a.active{
+    background: #B66D0D;
+    color: #fff;
+}
+nav ul li a:hover {
+    background: #B66D0D;
+    color: #fff;
+    transition: 0.5s;
+}
+
+@media (max-width: 1000px){
+header{
+    font-size: 1.3vw;
+    padding-right: 0;
+}
+
+.logo img {
+    height: 5vw;
+    width: auto;
+    padding: 0;
+    float: left;
+    margin-left: 1.7vw;
+    margin-top: 0.1vw;
+    margin-right: 0.5vw;
+}
+    
+.userOpinions label{
+        font-size: 1.9vw;
+    }
+}
+
+
+.MainSite {
+    position: relative;
+    margin: 0vw auto;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    padding: 0.2vw;
+    padding-top: 0;
+    background: #F6CACA;
+    border-bottom-left-radius: 1vw;
+    border-bottom-right-radius: 1vw;
+    overflow:auto;
+}
+
+.obycText {
+    padding: 5px;
+    display: table;
+    margin: auto;
+}
+
+.obycText p {
+    text-align: center;
+}
+
+.hiddenElm {display:none;}
+
+.googleButton {
+    position: fixed;
+    top: 1vw;
+    left: 0.2vw;
+}
+
+.googleButtonLogOut {
+    position: fixed;
+    top: 5vw;
+    left: 0.2vw;
+    width: 170px;
+    background-color: #B66D1D;
+    border: none;
+    color: white;
+    padding: 1em;
+    text-decoration: none;
+}

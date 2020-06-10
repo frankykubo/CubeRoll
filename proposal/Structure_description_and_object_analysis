@@ -1,0 +1,55 @@
+CubeRoll - základný balík, obsahuje hlavné triedy aplikácie a ostatné používané balíky
+	CubeRoll - Hlavna trieda obsahujuca main metódu
+	
+CubeRoll.Core - obsahuje triedy definujúce logiku hracieho poľa nezávislé od používateľského rozhrania
+	Cube - trieda obsahujuca logiku kocky
+	Game - trieda, ktorá sa stará o chod samotnej hry
+	Level - reprezentuje jednu úroveň hry
+	LevelFactory - trieda na tvorbu jednej inštancie levelu
+	TypeOfUI - enumeračný typ ktorý určuje, ake UI sa bude používať
+	Menu - Meno tejto triedy hovorí samo za seba, uchováva hlavné menu a jeho funkcie
+
+CubeRoll.Squares - balík obsahujúci všetky druhy dlaždíc, ktoré sa v hre vyskytuju
+	Classic - Základna dlaždica bez určitej funkcie
+	Colored - Dlaždica, ktorá kocku udrží iba ak je kocka na určitej strane
+	Finish - reprezentuje ciel
+	HighGround - klasicka dlaždica, akurát kocka preskočí akoby 2 dlaždice keď na ňu vôjde a keď z nej zoskočí
+	Hole - reprezentuje dieru. Ked sa na ňu kocka prevráti, level sa reštartuje.
+	Ice - Ľad. Šmýkne kocku v smere, do ktorého sa naň prevráti.
+	Moving - Reprezentuje posuvnu dlaždicu. Akonahle sa na ňu kocka dostane, posunie ju predom daným smerom.
+	PushButton - Tlačidlo. Ak sa naň kocka dostane, na mape sa sprístupní strategická dlaždica typu Hidden, ktorá umožní úspešné ukončenie levelu.
+	Hidden - dláždica, ktorá sa objaví po stlačení tlačidla PushButton
+	Square - Rozhranie definujuce hlavne metody dlaždíc, resp. všeobecná trieda, z ktorú ostatné dlaždice implementuju.
+	Temporary - Klasická dlaždica avšak s obmedzeným počtom použití, po ktorých vyčerpaní sa dlaždica rozpadne.
+	
+CubeRoll.Tests - balík obsahujúci testy ako JDBC služieb tak aj ostatných tried
+	CommentJDBCTest - testy pre službu CommentServiceJDBC
+	RatingJDBCTest - testy pre službu RatingServiceJDBC
+	ScoreJDBCTest - testy pre službu ScoreServiceJDBC
+	LevelTest - testy pre triedu Level
+	GameTest - obdobne testy pre triedu Game
+	CubeTest - testy pre triedu Cube
+	LevelFactoryTest - test pre triedu na vytvaranie Levelov
+	
+CubeRoll.UI
+	Color - Enumeračný typ definujúci farby konzoly
+	ConsoleUI - Konzolové rozhranie pre hru
+	UI - Abstraktná trieda určená pre dedenie
+	
+Entity - balík, ktorý uchováva entity
+	Score - trieda pre ukladanie a pracovanie so skóre
+	Comment - trieda určená pre komentáre ku hre
+	Rating - trueda určená pre prácu s hodnotením používateľa
+	
+Service - balík služieb
+	CommentException
+	ScoreException    - Tieto 3 triedy definujú chybu, ktorú vyhadzujú následujúce triedy a ich metody
+	RatingException
+	
+	ScoreService
+	CommentService    - Rozhrania, od ktorých dedia triedy využívajuce JDBC
+	RatingService
+	
+	ScoreServiceJDBC
+	CommentServiceJDBC  - Služby, ktoré spájajú náš program s databázou
+	RatingServiceJDBC

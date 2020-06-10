@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Gamestudio</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="/css/stylesheet.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/opinion.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <meta name="google-signin-client_id" content="817840104749-450a6jkqktbosugdlde0k8b8qhgup05d.apps.googleusercontent.com">
+</head>
+<body onload="myFunction()">
+<div id="loader"></div>
+<div style="display:none;" id="bodyElm" class="animate" >
+    <div class="headerGamestudio    "></div>
+    <div class="googleButton" id="my-signin2"></div>
+    <button onclick="signOut()" id="signOutButton" class="googleButtonLogOut hiddenElm">Odhlásiť sa</button>
+    <header>
+        <div class="menu"></div>
+        <nav id="menu">
+            <ul>
+                <li><a href="/menu" id="welcome" class="active" >Gamestudio home</a></li>
+                <li><div class="dropdown" id="cuberollMenu"><a>Cuberoll</a>
+                    <div class="dropdown-content">
+                        <a th:if="${@cubeRollController.actualLevel != null && @cubeRollController.level < 11}" href="/cuberoll/restart">Continue</a>
+                        <a th:if="${@cubeRollController.actualLevel != null}" href="/cuberoll/new">New game</a>
+                        <a th:if="${@cubeRollController.actualLevel == null}" href="/cuberoll">New game</a>
+                    </div>
+                </div>
+                </li>
+                <li><a href="/">Main Site</a></li>
+            </ul>
+        </nav>
+        <div class="fix"></div>
+    </header>
+    <main class="MainSite">
+        <span class="obycText">Vitajte na hernej webstránke Gamestudio. Z menu si vyberte hru, ktorú si chcete zahrať.</span>
+    </main>
+</div>
+<script>
+    function myFunction() {
+        setTimeout(showPage, 1750);
+    }
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("bodyElm").style.display = "block";
+    }
+</script>
+<script src="/js/googleSignIn.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
+</body>
+</html>

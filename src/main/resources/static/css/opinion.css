@@ -1,0 +1,123 @@
+.userOpinions {
+    width: 40%;
+    padding: 10px;
+    margin: auto;
+    background-color: #E4C2C6;
+    display: block;
+    border-radius: 10px;
+    clear: right;
+    font-size: 1vw;
+}
+
+.opinionHeader{
+    margin: 0;
+    text-align: center;
+    text-decoration-line: underline;
+    font-weight: 600;
+    font-size: 1.3vw;
+}
+
+.userOpinions div{
+    padding: 5px;
+    margin-right: 2vw;
+    clear: both;
+}
+
+.userOpinions label {
+    font-weight: 100;
+}
+
+#radios {
+    display: inline-block;
+    float: right;
+    margin-right: 0;
+}
+
+.userOpinions div input[type=radio] {
+    float: none;
+    margin: 0;
+    margin-left: 1vw;
+    padding: 0;
+    width: 1vw;
+    height: 1vw;
+}
+
+.userOpinions div input[id=userName], .userOpinions div input[id=email], .userOpinions div textarea[id=story] {
+    border-color: red;
+    padding: 0.5px;
+    border-width: 1.5px;
+}
+
+.userOpinions div input[type=checkbox] {
+    float: none;
+    margin: 0;
+    margin-left: 2px;
+    padding: 0;
+    display: inline-block;
+    width: 0.8vw;
+    height: 0.8vw;
+}
+
+.userOpinions div textarea {
+    float: right;
+    width: 50%;
+    resize: none;
+    margin-bottom: 5px;
+    max-height: 70px;
+}
+
+.userOpinions div input {
+    float: right;
+    width: 50%;
+    height: 2.4vw;
+    max-height: 18px;
+}
+
+#gdpr {
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/************CSS FOR ONE OPINION**************/
+
+.opinionsDivision{
+    font-size: 1vw;
+    word-wrap: break-word;
+    width: 60%;
+    margin: auto;
+}
+
+.opinionsDivision section{
+    padding: 10px;
+    margin: 1em;
+    background-color: #E4C2C6;
+    border-radius: 10px;
+}
+
+.opinionsDivision section strong{
+    color: #B66D0D;
+}
+
+
+@media (max-width: 1000px){  
+    .userOpinions label{
+            font-size: 1.9vw;
+        }
+    .opinionHeader{
+        font-size: 1.9vw;
+    }
+    
+    .buttons button {
+        padding: 2vw 3vw;
+        font-size: 2vw;
+        width: 12vw;
+        margin: auto;
+    }
+    
+    .opinionsDivision{
+        font-size: 2vw;
+        width: 40%;
+    }
+}

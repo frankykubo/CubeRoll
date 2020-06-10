@@ -1,0 +1,23 @@
+1. Tvorba a priebeh hry
+    Hra sa vytvorí v hlavnej metóde main triedy CubeRoll. Ako parameter vyžaduje iba typ uživatelskeho rozhrania, v našom prípade grafického alebo konzolového. V konštruktore si
+	trieda Game vytvorí inštanciu LevelFactory a členskej premennej level priradí hodnotu 1. Následne sa hra spúšťa metódou playGame(). Hlavný cyklus hry záleží na hodnote,
+	ktorú vracia metóda mainMenu triedy Menu, ktoré sa po spustení hry objaví ako prvé. Po vyžiadaní začiatku hry (prikaz play) sa vytvorí herný level na základe členskej premennej
+	level (int) a metóda play() vytvorenej inštancie triedy Level sa stará o chod hry počas hrania konkrétneho levelu. Na základe výstupu tejto metódy metóda playGame() vyhodnotí
+	ukončenie levelu, či ukončenie hry, prípadne reštart levelu (buď si to hráč vyžiada, alebo spadne do diery). V prípade úspechu inkrementuje premennu level a cyklus sa opakuje.
+	Ak level dosiahne maximálnej hodnoty a hráč ho úspešne ukončí, samotná hra končí a v tom prípade má hráč aj možnosť uložiť skóre do globálnej tabulky. V opačnom prípade
+	(hráč skončí hru skôr) sa skóre neukladá. Po každej ukončenej hre ako aj počas bytia v main menu vie hráč ohodnotiť, prípadne okomentovať hru a samozrejme si hodnodenie a
+	komenty zobraziť. Počas bytia v menu alebo v samotnej hre sa dajú používať rôzne príkazy. Ktoré príkazy môžete využiť sa vždy dozviete po napísaní príkazu “commands“.
+	O tom však v ďalších kapitolách.
+
+2. Tvorba levelu
+    Pri hre CubeRoll nie je potrebné náhodne generovať levely, no naopak je potrebné ich niekde uchovať. Rozhodol som sa pre spôsob, ktorý sme v podstate používali pri zadaní z OOP,
+	tým je trieda LevelFactory. Pri generovaní hracieho poľa je potrebný level (int), ktorý trieda game pošle do metódy createLevel ako parameter a LevelFactory podľa toho vygeneruje
+	danú úroveň, jej mapu, štartovaciu pozíciu a rotáciu kocky (jednoduchy switch-case). Mapa je reprezentovaná dvojrozmerným poľom typu Square. Pri vytvárani samotného levelu na
+	začiatku definujem každú položku poľa ako Hole, teda dieru, keďže tých je väčšinou na mape najviac. Hneď na to sa do mapy vkladajú rôzne typy dlaždíc samozrejme tak, aby bol 
+	level dohrateľný. Vo finále táto metóda vráti funkčný level, ktorý potom používa trieda Game.
+
+3. Priebeh levelu
+    Hráč sa ocitne na začiatočnej pozícii a podľa mapy sa môže pohybovať štyrmi základnými smermi. Hore, dole, doprava a doľava. Pri každom ťahu sa overuje, či hráč nespadol do diery.
+	Ak áno, level sa reštartuje. Máme rôzne typy dlaždíc a každá je špecifická niečim iným, preto sa teda po každom pohybe použije metóda danej dlaždice interactWith(), ktorá potom
+	interaguje s kockou. Taktiež sa inkrementuje počet pohybov (prípadne „smrtí“), na základe ktorých sa určí výsledné skóre z daného levelu. Level sa považuje za úspešne dokončený
+	vtedy, keď sa hráč dostane žltou stranou na dlaždicu typu Finish.

@@ -1,0 +1,237 @@
+.gameWindow{
+    margin-left: 2vw;
+    margin-top: 1.53em;
+    padding-top: 0px;
+    border-width: 5px;
+    border-style: solid outset;
+    border-color: #262626;
+    width: max-content;
+    height: max-content;
+    background: url("../images/cuberoll/backgroundTexture.png");
+}
+
+.map{
+    position: relative;
+    width: max-content;
+    margin: auto;
+    margin-top: 3px;
+}
+
+.cubeRot {
+    width: max-content;
+    margin: auto;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #F6D55C;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    margin-bottom: 3px;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 300;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+.level {
+    margin-left: 3vw;
+    float: left;
+    max-width: 50%;
+}
+
+.services {
+    margin-right: 5vw;
+    float: right;
+}
+
+#comments{
+    width: max-content;
+    height: max-content;
+    margin-left: 5vw;
+    float: left;
+}
+
+#ratings{
+    width: max-content;
+    height: max-content;
+    margin-right: 5vw;
+    float: right;
+}
+
+.scoreLevel{
+    font-weight: bold;
+    background: #E67112;
+    font-size: xx-large;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.scoreBoth {
+    padding-top: 3px;
+    padding-bottom: 3px;
+    background: #DEAC37;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.nextMove {
+    padding: 5px;
+    background: #DEAC37;
+    width: max-content;
+    margin: auto;
+}
+
+.rating {
+    display: inline-block;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 50px;
+}
+
+.rating label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.rating label:last-child {
+    position: static;
+}
+
+.rating label:nth-child(1) {
+    z-index: 5;
+}
+
+.rating label:nth-child(2) {
+    z-index: 4;
+}
+
+.rating label:nth-child(3) {
+    z-index: 3;
+}
+
+.rating label:nth-child(4) {
+    z-index: 2;
+}
+
+.rating label:nth-child(5) {
+    z-index: 1;
+}
+
+.rating label input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.rating label .icon {
+    float: left;
+    color: transparent;
+}
+
+.rating label:last-child .icon {
+    color: #000;
+}
+
+.rating:not(:hover) label input:checked ~ .icon,
+.rating:hover label:hover input ~ .icon {
+    color: #09f;
+}
+
+.rating label input:focus:not(:checked) ~ .icon:last-child {
+    color: #000;
+    text-shadow: 0 0 5px #09f;
+}
+
+.oneRating{
+    padding: 1em;
+    background-color: #E4C2C6;
+    border-radius: 10px;
+    margin-bottom: 1vw;
+    clear: both;
+}
+
+.plrName {
+    font-size: 1.3em;
+}
+
+.plrRated{
+    float: right;
+}
+
+.avgPlrRated {
+    display: flex;
+    justify-content: center;
+}
+
+.avgRating {
+    padding: 1em;
+    background-color: #B66D1D;
+    border-radius: 10px;
+    margin-bottom: 1vw;
+    clear: both;
+}
+
+.scoresTable {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    margin-bottom: 8px;
+    border-collapse: collapse;
+}
+
+.scoresTable, .scoresTable th, .scoresTable td {
+    text-align: center;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+th {
+    background-color: #4CAF50;
+    height: 1.5rem;
+    color: white;
+}
+
+.form{
+    width: max-content;
+    padding: 1vw;
+    margin: auto;
+    background-color: #E4C2C6;
+    display: block;
+    border-radius: 10px;
+    clear: right;
+    font-size: 1vw;
+}
+
+#closeComment, #closeRating, #closeScore {
+    background-color: red;
+    border-color: red;
+}
+
+.infoDiv {
+    position: relative;
+    top: 6em;
+    left: 10em;
+}

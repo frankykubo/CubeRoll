@@ -1,0 +1,195 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CubeRoll | Gamestudio</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="google-signin-client_id" content="817840104749-450a6jkqktbosugdlde0k8b8qhgup05d.apps.googleusercontent.com">
+    <link rel="stylesheet" href="/css/stylesheet.css"/>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/opinion.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/game.css">
+</head>
+<body>
+<div class="headerCuberoll"></div>
+<div class="googleButton" id="my-signin2"></div>
+<button onclick="signOut()" id="signOutButton" class="googleButtonLogOut hiddenElm">Odhlásiť sa</button>
+<header>
+    <div class="menu"></div>
+    <nav id="menu">
+        <ul>
+            <li><a href="/menu" id="welcome" >Gamestudio home</a></li>
+            <li><a href="/cuberoll/new" >New game</a></li>
+            <li><a href="/">Main Site</a></li>
+        </ul>
+    </nav>
+    <div class="fix"></div>
+</header>
+<div class="MainSite">
+    <div class="level">
+    <div th:if="${@cubeRollController.state != 1 && @cubeRollController.state != 5 && @cubeRollController.state != 10 && @cubeRollController.state != 11}">
+        <div class="gameWindow" id="gameWindow">
+            <div class="scoreLevel" th:utext="'Level ' + ${@cubeRollController.level} + '<span class=\'buttons\'><a style=\'font-size: initial;\' href=\'/cuberoll/userRestart\'><button style=\'padding: 0.3vw 0.8vw;\'>Restart level</button></a></span>'"></div>
+            <div class="scoreBoth"><span class="scoreSteps" th:text="'Total steps: '+ ${@cubeRollController.score.getSteps()}"/> | <span class="scoreDeaths" th:text="'Total deaths: '+ ${@cubeRollController.score.getDeaths()}"/></div>
+            <div th:utext="${@cubeRollController.printHtmlMap()}"/>
+            <div th:utext="${@cubeRollController.printHtmlCube()}"/>
+            <footer></footer>
+        </div>
+    </div>
+    <div class="infoDiv" th:if="${@cubeRollController.state == 1}">
+        <div class="infoText">You have fallen to the hole. Restart level?</div>
+        <div class="buttons">
+        <a href="/cuberoll/restart"><button>Yes</button></a><a href="/menu"><button>Back to main menu</button></a>
+        </div>
+    </div>
+    <div class="infoDiv" th:if="${@cubeRollController.state == 5}">
+        <div class="infoText" th:text="'You have finished level '+ ${finishedLevel} + ' with ' + ${levelSteps} + ' steps and ' + ${@cubeRollController.getScore().getActualDeaths()} + ' deaths.'"></div>
+        <div class="buttons">
+        <a href="/cuberoll"><button th:onclick="${@cubeRollController.setStateTo0()}">Awesome, next level please.</button></a>
+        </div>
+    </div>
+    <div th:if="${@cubeRollController.state == 10}">
+        <div class="infoDiv">
+            <div class="infoText" style="text-align: center" th:utext="'Congratulations, you have nailed the last level.<br>Add score, if you  want be in table.<br>Your score is ' + ${@cubeRollController.getScore().getPoints()}+' points.'"></div>
+            <div class="form">
+                <div class="buttons" id="addScore">
+                <button onclick="addScoreClick()">Submit score</button>
+                </div>
+                <button id="closeScore" class="hiddenElm" onclick="closeScoreClick()" >Close</button>
+                <form class="hiddenElm" id="addScoreForm" method='get' action='/cuberoll/score'>
+                    <label for='userName3'>Username: </label>
+                    <input type='text' id='userName3' name='userName' required disabled>
+                    <div class="buttons" style="margin-top: 5px;">
+                    <button type='submit' value='submit' onclick="document.getElementById('userName3').removeAttribute('disabled')">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="infoDiv" th:if="${lowerScoreThanPersonalBest == true}">
+        <div class="infoText">Score has not been added to table because you have already ended the game with higher score. Still thank you for playing game! Don't forget to rate and comment the game though!</div>
+    </div>
+    <div class="infoDiv" th:if="${lowerScoreThanPersonalBest == false}">
+        <div class="infoText">Score has been added to table. Thank you for playing the game, see you next time! If you liked the game, place a comment or rating down below!</div>
+    </div>
+    </div>
+    <div class="services">
+        <h2>Best Players</h2>
+        <table th:if="${scoresSize > 0}" th:class="scoresTable">
+            <tr>
+                <th>Nickname</th>
+                <th>Points</th>
+                <th>Played on</th>
+            </tr>
+            <tr th:each="score : ${scores}">
+                <td th:text="${score.player}"></td>
+                <td th:text="${score.points}"></td>
+                <td th:text="${@cubeRollController.getDate(score.playedOn)}"></td>
+            </tr>
+        </table>
+        <span class="infoText" th:if="${scoresSize == 0}">Game does not have any scores yet.</span>
+    </div>
+    <div style="clear: both"></div>
+    <hr>
+    <div id="comments">
+        <h2 style="text-align: center">Comments</h2>
+        <span th:each="comment : ${comments}">
+            <span class="opinionsDivision">
+                <section>
+                    <h4>Napísal <strong th:text="${comment.player}"></strong> dňa <i th:text="${@cubeRollController.getDate(comment.commentedOn)}"></i></h4>
+                    <p th:text="${comment.comment}"></p>
+                </section>
+            </span>
+        </span>
+        <span class="infoText" th:if="${commentsSize == 0}">Game does not have any comments yet.</span>
+        <div class="form">
+            <div id="addComment" class="buttons">
+            <button onclick="addCommentClick()">Add comment</button>
+            </div>
+            <button id="closeComment" class="hiddenElm" onclick="closeCommentClick()" >Close</button>
+            <form class="hiddenElm" id="addCommentForm" method='get' action='/cuberoll/comment'>
+                <label for='userName2'>Username: </label>
+                <input type='text' id='userName2' name='userName' required disabled>
+                <br>
+                <label for='comment'>Your comment: </label>
+                <br>
+                <textarea id='comment' name='comment' rows='10' cols='45' required placeholder='Your comment..' maxlength='255'></textarea>
+                <br>
+                <div class="buttons">
+                <button type='submit' value='submit' onclick="document.getElementById('userName2').removeAttribute('disabled')">Submit</button>
+                <button type='reset' value='reset' onclick="setTimeout(updateSignIn, 100)">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="ratings">
+        <h2 style="text-align: center">Ratings</h2>
+        <div class="oneRating" th:each="rating : ${ratings}">
+            <span th:class="plrName" th:text="${rating.player} + ' '"/>
+            <span th:class="plrRated" th:utext="'<img src=\'/images/cuberoll/'+${rating.rating}+'stars.png\'></img>'"/>
+        </div>
+        <div  th:if="${avgRating != null}" class="avgRating">
+            <div th th:class="plrName" style="text-align: center" th:text="'Average rating'"></div>
+            <div th:class="avgPlrRated" th:utext="'<img src=\'/images/cuberoll/'+${avgRating}+'stars.png\'></img>'"></div>
+        </div>
+        <span class="infoText" th:if="${ratingsSize == 0}">Game does not have any ratings yet.</span>
+        <div style="clear: both"></div>
+        <div class="form">
+            <div id="addRating" class="buttons">
+            <button onclick="addRatingClick()">Add rating</button>
+            </div>
+            <button id="closeRating" class="hiddenElm" onclick="closeRatingClick()" >Close</button>
+            <form class="hiddenElm" id="addRatingForm" method='get' action='/cuberoll/rating'>
+                <label for='userName'>Username: </label>
+                <input type='text' id='userName' name='userName' required disabled>
+                <!--        <input type='number' id='rating' name='rating' min='1' max='5' required>-->
+                <br>
+                <div id="stars" class="hiddenElm rating">
+                    <label>
+                        <input type="radio" name="rating" value="1" />
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="2" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="3" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="4" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="rating" value="5" />
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                        <span class="icon">★</span>
+                    </label>
+                </div>
+                <br>
+                <div class="buttons">
+                <button type='submit' value='submit' onclick="document.getElementById('userName').removeAttribute('disabled')">Submit</button>
+                <button type='reset' value='reset' onclick="setTimeout(updateSignIn, 100)">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("gameWindow").scrollIntoView();
+     // window.scrollTo(0,document.body.scrollHeight);
+</script>
+<script src="/js/googleSignIn.js"></script>
+<script src="https://apis.google.com/js/platform.js?onload=startGSingIn" async defer></script>
+</body>
+</html>
