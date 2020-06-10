@@ -15,7 +15,7 @@ public class LevelFactory {
 
     public Level createLevel(int number, TypeOfUI typeOfUI){
         Cube cube;
-        File file = new File("C:\\Users\\frank\\Desktop\\Komponentové programo\\Zadanie CUBE\\src\\map");
+        File file = new File("src\\map");
         Scanner sc = null;
         try {
             sc = new Scanner(file);
